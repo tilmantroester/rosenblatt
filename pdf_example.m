@@ -1,4 +1,5 @@
-D = 0.3
+%% Computes PDF
+D = 0.3;
 x = linspace(-2,5,30);
 
 M = 50;
