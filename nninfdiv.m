@@ -20,7 +20,11 @@ function varargout = nninfdiv(x,dist,varargin)
 %       where X(1) has K(1) degress of freedom etc...
 %       If K (C) is a scalar and C (K) is a vector, then replaces scalar
 %       with vector same length of C whose entries are equal to K.
-
+%
+% Reference:
+%     Veillette, Mark S., and Murad S. Taqqu. "A technique for computing the PDFs and CDFs of 
+%       nonnegative infinitely divisible random variables." Journal of Applied Probability 48.1 (2011): 217-237.
+%
 
 % Set defaults
 TOL = 1e-6;

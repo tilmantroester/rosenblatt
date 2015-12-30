@@ -52,6 +52,9 @@ else
                  0 1 0 1 0 0;...
                  1 0 0 0 1 0;...
                  0 0 0 0 0 1;];
+                 
+        otherwise
+            error('Values of N greater than 8 aren''t supported, sorry');
                 
 
     end

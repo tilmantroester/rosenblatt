@@ -1,34 +1,37 @@
-function [Lam phis T] = RosenblattEigs(D,M,varargin)
-% Returns approximations of the frist M eigenvalues of the Rosenblatt
+function [Lam phis T] = RosenblattEigs(D,M,N)
+% Returns approximations of the first M eigenvalues of the Rosenblatt
 % distribution with parameter D.
+%  Inputs:
+%      D:  Parameter in Rosenblatt distribution in (0,1/2)
+%      M:  Number of eigenvalues to return (must be less than N)
+%      N:  (Optional) Number of gridpoitns used to approximate discrete integral operator
+%          Defaults to 600.
+%  Note:  N should be much bigger than M.
+%
+%  Outputs:
+%      Lam:  Vector of M eigenvalues
+%     phis:  Matrix of eigenvectors
+%     T   :  Discrete matrix operator using to compute eigenvalues
+%
+%  Example:
+%      eig_vals = RosenblattEigs(0.3)
+%
 
-if M > 5000
-    error('Make M smaller!')
+if nargin == 2
+    N = 600;
 end
 
-% Define discrete integral operator
-% a = 0;
-% b = 1;
-% N = 5000;
-% x = linspace(a,b,N);
-% row1 = zeros(N,1);
-% row1(1) = N^D/(1-D);
-% row1(2:end) = abs(x(1) - x(2:end)).^(-D);
-% T = toeplitz(row1)/N;
-% T(:,1) = .5 * T(:,1);
-% T(:,end) = .5 * T(:,end);
-% Lam = eigs(T,M);
+if M > 5000
+    error('You should probably make M smaller.  Comment this error out if you''re feeling lucky..')
+end
 
+if M > N
+    error('M must be less or equal to N');
+end
 
 a = 0;
 b = 1;
-if isempty(varargin)
-    N = 600;
-else
-    N= varargin{1};
-end
 x = meshgen(a,b,N);
-%x = linspace(a,b,N);
 e = x(2:end)-x(1:end-1);
 T = zeros(N);
 c = zeros(1,N-1);

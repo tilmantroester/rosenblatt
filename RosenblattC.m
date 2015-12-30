@@ -1,7 +1,16 @@
-function c = RosenblattC(D,K,varargin)
+function c = RosenblattC(D,K,type)
 % Numerically approximates the first K cumulants of the Rosenblatt
-% distribution normalized to have variance 1.
-    
+% distribution with parameter D that is normalized to have variance 1.
+%
+% Inputs:
+%    D:  Parameter of Rosenblatt distribution in (0,1/2)
+%    K:  Number of cumulants to approximate
+%    type:  Type of output.  Either 'cumulants', 'moments' or 'cs'.  
+%    
+
+if nargin == 2
+    type = [];
+ end
 
 if D==0
     c = ones(max(K,3),1);
@@ -47,8 +56,8 @@ elseif D<1/2
 
 end
 
-if ~isempty(varargin)
-    switch varargin{1}
+if ~isempty(type)
+    switch type
         case 'cs'
             c = c;
         case 'cumulants'

@@ -1,10 +1,11 @@
-%% Computes PDF
+% This is a simple script for plotting the Rosenblatt PDF for a particular value of D.
+%% Compute PDF (this takes some time to run)
 D = 0.3;
 x = linspace(-2,5,30);
 
 M = 50;
 N = 5;
-pdf = RosenblattCDF( x,D,M,N,'pdf');
+pdf = RosenblattPDF( x,D,M,N);
 
 %% Plot
 % Fits a spline to use inbetween function evaluations

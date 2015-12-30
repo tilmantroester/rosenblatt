@@ -1,5 +1,14 @@
 function f = PWextrap(k,P,method)
-
+% Performs Post-Widder extrapolation to approximate convergence of a finite sequence.
+%  Inputs:  
+%      k:  Sequence of indices in sequence 
+%         (for 'polynomial', this must be in the form k_j = k_0 * j for some k_0)
+%      P:  Terms in sequence whose limit is being approximated
+%      method:   Extrapolation method:  'polynomial' or 'rational'. 
+%  Output:  
+%      f :  Approximation of limit of sequence.
+%
+%
     switch lower(method)
         case 'polynomial'
             % Extrapolates limit using Lagrange polynomial interpolation
