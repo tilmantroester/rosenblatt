@@ -20,6 +20,8 @@ function PDF = RosenblattPDF(z,D,M,N)
 %
 % Reference:
 %   Veillette, Mark S., and Murad S. Taqqu. "Properties and numerical evaluation of the Rosenblatt distribution." Bernoulli 19.3 (2013): 982-1005.
+%
+%
 if nargin == 2
     M = 50;
     N = 5;

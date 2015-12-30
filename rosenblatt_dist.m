@@ -18,6 +18,9 @@ function y = rosenblatt_dist( z, D, func, M, N )
 %       cdf  =  rosenblatt_dist( [0 1 2] , 0.3, 'cdf' );
 %       cdf2 =  rosenblatt_dist( [0 1 2] , 0.3, 'cdf', 100, 6 );
 %
+% Reference:
+%   Veillette, Mark S., and Murad S. Taqqu. "Properties and numerical evaluation of the Rosenblatt distribution." Bernoulli 19.3 (2013): 982-1005.
+%
 
 if nargin == 3
     M = 50;
