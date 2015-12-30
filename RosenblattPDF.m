@@ -9,7 +9,7 @@ function PDF = RosenblattPDF(z,D,M,N)
 %      N:    (Optional) Number of terms to use in Edgeworth expansion to approximate infinite sum of chi-squares
 %
 % Outputs:  
-%      y:   value of pdf
+%      PDF:   value of pdf
 %
 %  Note:  M,N take default values of 50 and 5, respectively.  To obtain more digits of accuracy 
 %         it might be necessary to increase these values.  
