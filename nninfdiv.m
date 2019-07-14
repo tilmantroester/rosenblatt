@@ -113,9 +113,13 @@ for j = 1:Nks
         case 'pdf'
         % Step 4.    
         z = Dpsi(kj,j,nocvg);
-        P(1,j,nocvg) = (-1)^(kj-1)/factorial(kj-1) * ...
-                        sign(z) .* ...
-                       exp(kj * log(kj./x3(nocvg)) + log(abs(z)) );                  
+        %disp("z"), disp(size(z));
+	%disp("x3"), disp(size(x3)), disp(size(x3(nocvg)));
+	z_s = squeeze(z);
+	x3_s = squeeze(x3);
+	P(1,j,nocvg) = (-1)^(kj-1)/factorial(kj-1) .* ...
+                        sign(z_s) .* ...
+                       exp(kj .* log(kj./x3_s(nocvg)) .+ log(abs(z_s)) );                  
         case 'cdf' 
         % Step 4*.
         r = repmat((0:kj-1)',[1,1,N]);
@@ -285,12 +289,20 @@ function D = IDPhik(k,x,dist)
             
             
             n = (1:(k-1))';
-            Xmat = repmat(x,[k-1,1,1]);
+            Xmat = repmat(x,[1,1,k-1]);
             Nmat = repmat(n,[1,1,length(x)]);
 
+	    Xmat = permute(Xmat, [3 2 1]);
+
             D = zeros(size(Nmat));
-            for i = 1:length(C)
-            D = D + (-1).^Nmat .* (df(i)/2) ...
+            %disp(size(Nmat))
+	    %disp(size(df))
+	    %disp(size(C))
+	    %disp(size(Xmat))
+	    %disp(size(x))
+	    %disp(size(n))
+	    for i = 1:length(C)
+            D = D .+ (-1).^Nmat .* (df(i)/2) ...
                 .* exp(-Nmat.*log(1/(2*C(i)) + k./Xmat) + gammaln(Nmat));
             end
             
